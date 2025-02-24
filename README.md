@@ -10,11 +10,8 @@ I'm a passionate software developer with a keen interest in  frontend projects. 
 - 🔭 I’m currently working on **[Your Project/Repo](https://github.com/your-repo-link)**
 - 🌱 I’m currently learning **[HTML,CSS and C ]**
 - 👯 I’m looking to collaborate on **[Project/Repo]**
-- 🤔 I’m looking for help with **[Project/Repo]**
-- 💬 Ask me about **[HTML & CSS problems]**
 - 📫 How to reach me: **[Email](404prabhat@gmail.com)**
-- 😄 Pronouns: **He/Him**
-- ⚡ Fun fact: **[Fun Fact]**
+
 
 ## Technologies & Tools
 

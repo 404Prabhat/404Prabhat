@@ -43,48 +43,13 @@ focus.log  [active threads]
 
 ---
 
-## `$ uptime --dev-life`
-
-<div align="center">
-
-[![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=YOUR_WAKATIME_USERNAME&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=888888&text_color=666666&icon_color=555555&hide_title=false&layout=compact)](https://wakatime.com/@YOUR_WAKATIME_USERNAME)
-
-> ⚠️ Replace `YOUR_WAKATIME_USERNAME` · Enable public profile at wakatime.com/settings
-
-</div>
-
-<br>
-
----
-
 ## `$ curl system.local/status`
 
 <div align="center">
 
-[![system](https://img.shields.io/endpoint?url=https://your-domain/api/system&style=flat-square&label=system+status&labelColor=0d1117)](https://your-domain)
-[![uptime](https://img.shields.io/endpoint?url=https://your-domain/api/uptime&style=flat-square&label=uptime&labelColor=0d1117)](https://your-domain)
-[![services](https://img.shields.io/endpoint?url=https://your-domain/api/services&style=flat-square&label=services&labelColor=0d1117)](https://your-domain)
+![homelab](https://img.shields.io/badge/homelab-self--hosted-333333?style=flat-square&labelColor=0d1117)
 
 </div>
-
-```bash
-# self-hosted badge endpoint — return this JSON shape from your API:
-
-{
-  "schemaVersion": 1,
-  "label": "system",
-  "message": "up 3d 4h │ cpu 12% │ mem 3.2G │ 🟢 all clear",
-  "color": "brightgreen",
-  "style": "flat-square"
-}
-
-# minimal FastAPI route:
-# @app.get("/api/system")
-# def system_status():
-#     return { ...read from psutil... }
-```
-
-> ⚠️ Replace endpoint URLs · See setup guide at bottom
 
 <br>
 
@@ -170,11 +135,6 @@ focus.log  [active threads]
 
 </div>
 
-```
-# cards auto-update: stars · forks · commits · description
-# no maintenance required — reflects live repo state
-```
-
 <br>
 
 ---
@@ -204,18 +164,24 @@ focus.log  [active threads]
 <br>
 
 ### WakaTime (coding time tracker)
+
 1. Install the WakaTime plugin for your editor
 2. Create an account at [wakatime.com](https://wakatime.com)
 3. Go to **Settings → Profile → Public** and enable public stats
-4. Replace `YOUR_WAKATIME_USERNAME` in the badge URL above
+4. Add this block to your README, replacing `YOUR_USERNAME` with your WakaTime username:
+
+```markdown
+[![WakaTime Stats](https://github-readme-stats.vercel.app/api/wakatime?username=YOUR_USERNAME&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=888888&text_color=666666&icon_color=555555&layout=compact)](https://wakatime.com/@YOUR_USERNAME)
+```
 
 ---
 
 ### Self-Hosted System Badge
-Deploy a tiny API anywhere (VPS, Raspberry Pi, homelab):
+
+When your homelab has a public endpoint, replace the static badge in `$ curl system.local/status` with live shields. Deploy a tiny FastAPI on your VPS or Raspberry Pi:
 
 ```python
-# server.py — FastAPI example
+# server.py
 from fastapi import FastAPI
 import psutil, subprocess
 
@@ -236,18 +202,20 @@ def system_status():
 ```
 
 ```bash
-# Run it
+# run it
 pip install fastapi uvicorn psutil
 uvicorn server:app --host 0.0.0.0 --port 8080
 
-# Expose via Nginx + Cloudflare Tunnel or your domain
-# Then update the badge URL in the README
+# expose via Nginx + Cloudflare Tunnel or your own domain
+# then swap the static badge in the README with:
+# [![system](https://img.shields.io/endpoint?url=https://your-domain/api/system&style=flat-square&label=system+status&labelColor=0d1117)](https://your-domain)
 ```
 
 ---
 
-### Auto-Updating README via Cron (optional, max chaos)
-```bash
+### Auto-Updating README via GitHub Actions (optional, max chaos)
+
+```yaml
 # .github/workflows/update.yml
 name: Refresh README
 on:

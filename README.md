@@ -1,6 +1,6 @@
 # Prabhat
 
-Security & network auditing · self-hosted AI · automation  
+## Automating.....
 Nepal 🇳🇵
 
 ![](https://ghchart.rshah.org/404Prabhat)
